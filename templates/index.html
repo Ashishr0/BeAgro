@@ -902,6 +902,11 @@
         <a href="#farm-overview" class="nav-item">🌾 Farm Overview</a>
         <a href="#irrigation" class="nav-item">💧 Irrigation</a>
         <a href="#analytics" class="nav-item">📊 Analytics</a>
+		
+       <a href="/static/season_crop_simulation_working.html" class="nav-item">
+             🌱 Season Crop
+       </a>
+
         <a href="#ml" class="nav-item">🤖 ML Prediction</a>
 
     </aside>
@@ -4349,6 +4354,40 @@ setInterval(
     }
 })();
 </script>
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const seasonLink = document.querySelector(
+        '.nav-item[data-section="season-simulation"]'
+    );
+
+    const seasonSection = document.getElementById("season-simulation");
+
+    if (!seasonLink || !seasonSection) {
+        console.error("Season Crop link or section not found.");
+        return;
+    }
+
+    seasonLink.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Hide other dashboard sections
+        document.querySelectorAll(".dashboard-section").forEach(section => {
+            section.style.display = "none";
+        });
+
+        // Show Season Crop
+        seasonSection.style.display = "block";
+
+        // Update active sidebar item
+        document.querySelectorAll(".nav-item").forEach(item => {
+            item.classList.remove("active");
+        });
+
+        seasonLink.classList.add("active");
+    });
+});
+</script>
+
 
 </body>
 </html>
